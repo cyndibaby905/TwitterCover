@@ -45,7 +45,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, CHTwitterCoverViewHeight, self.view.bounds.size.width - 40, 600 - CHTwitterCoverViewHeight)];
         label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:22];
-        label.text = @"TwitterCover is a parallax top view to any UIScrollView, inspired by Twitter for iOS.\n\nCompletely created using UIKit framework.\n\nEasy to drop into your project.\n\nYou can add this feature to your own project, TwitterCover is easy-to-use.";
+        label.text = @"TwitterCover is a parallax top view with real time blur effect to any UIScrollView, inspired by Twitter for iOS.\n\nCompletely created using UIKit framework.\n\nEasy to drop into your project.\n\nYou can add this feature to your own project, TwitterCover is easy-to-use.";
         label;
     })];
 
