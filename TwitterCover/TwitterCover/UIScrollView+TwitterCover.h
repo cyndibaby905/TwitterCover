@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#define CHTwitterCoverViewHeight 200
+
+@interface CHTwitterCoverView : UIImageView
+@property (nonatomic, weak) UIScrollView *scrollView;
+@end
+
 
 @interface UIScrollView (TwitterCover)
+@property(nonatomic,weak)CHTwitterCoverView *twitterCoverView;
 - (void)addTwitterCoverWithImage:(UIImage*)image;
+@end
+
+@interface UIImage (Blur)
+-(UIImage *)boxblurImageWithBlur:(CGFloat)blur;
 @end

@@ -21,6 +21,8 @@
 		77717519187C54EE0059155A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77717517187C54EE0059155A /* InfoPlist.strings */; };
 		7771751B187C54EE0059155A /* TwitterCoverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7771751A187C54EE0059155A /* TwitterCoverTests.m */; };
 		77717527187C55900059155A /* UIScrollView+TwitterCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 77717526187C55900059155A /* UIScrollView+TwitterCover.m */; };
+		77C76384187DA1B8006716A9 /* cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C76382187DA1B8006716A9 /* cover.png */; };
+		77C76385187DA1B8006716A9 /* cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C76383187DA1B8006716A9 /* cover@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		7771751A187C54EE0059155A /* TwitterCoverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterCoverTests.m; sourceTree = "<group>"; };
 		77717525187C55900059155A /* UIScrollView+TwitterCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TwitterCover.h"; sourceTree = "<group>"; };
 		77717526187C55900059155A /* UIScrollView+TwitterCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TwitterCover.m"; sourceTree = "<group>"; };
+		77C76382187DA1B8006716A9 /* cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover.png; sourceTree = "<group>"; };
+		77C76383187DA1B8006716A9 /* cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 		777174F2187C54EE0059155A /* TwitterCover */ = {
 			isa = PBXGroup;
 			children = (
+				77C76382187DA1B8006716A9 /* cover.png */,
+				77C76383187DA1B8006716A9 /* cover@2x.png */,
 				77717524187C55900059155A /* TwitterCover */,
 				777174FB187C54EE0059155A /* CHAppDelegate.h */,
 				777174FC187C54EE0059155A /* CHAppDelegate.m */,
@@ -239,6 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77C76385187DA1B8006716A9 /* cover@2x.png in Resources */,
+				77C76384187DA1B8006716A9 /* cover.png in Resources */,
 				77717508187C54EE0059155A /* Images.xcassets in Resources */,
 				777174F7187C54EE0059155A /* InfoPlist.strings in Resources */,
 			);
@@ -386,6 +394,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwitterCover/TwitterCover-Prefix.pch";
 				INFOPLIST_FILE = "TwitterCover/TwitterCover-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,6 +408,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwitterCover/TwitterCover-Prefix.pch";
 				INFOPLIST_FILE = "TwitterCover/TwitterCover-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -465,6 +475,7 @@
 				77717520187C54EE0059155A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77717521187C54EE0059155A /* Build configuration list for PBXNativeTarget "TwitterCoverTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +484,7 @@
 				77717523187C54EE0059155A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
