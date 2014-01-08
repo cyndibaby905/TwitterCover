@@ -99,7 +99,7 @@ static char UIScrollViewTwitterCover;
         CGFloat offset = -self.scrollView.contentOffset.y;
         
         
-        self.frame = CGRectMake(-offset,-offset, 320+ offset * 2, CHTwitterCoverViewHeight);
+        self.frame = CGRectMake(-offset,-offset, 320+ offset * 2, CHTwitterCoverViewHeight + offset);
         NSInteger index = offset / 10;
         if (index < 0) {
             index = 0;
