@@ -1,6 +1,6 @@
 ## TwitterCover ##
 
-TwitterCover is a parallax top view to any UIScrollView, inspired by Twitter for iOS.
+TwitterCover is a parallax top view with real time blur effect to any UIScrollView, inspired by Twitter for iOS.
 
 Completely created using UIKit framework.
 
