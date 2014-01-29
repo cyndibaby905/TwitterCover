@@ -36,6 +36,7 @@
 @property(nonatomic,weak)CHTwitterCoverView *twitterCoverView;
 - (void)addTwitterCoverWithImage:(UIImage*)image;
 - (void)addTwitterCoverWithImage:(UIImage*)image withTopView:(UIView*)topView;
+- (void)removeTwitterCoverView;
 @end
 
 @interface UIImage (Blur)

@@ -64,6 +64,13 @@ static char UIScrollViewTwitterCover;
     }
     self.twitterCoverView = view;
 }
+
+- (void)removeTwitterCoverView
+{
+    [self.twitterCoverView removeFromSuperview];
+    self.twitterCoverView = nil;
+}
+
 @end
 
 
@@ -116,9 +123,11 @@ static char UIScrollViewTwitterCover;
     [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)dealloc
+- (void)removeFromSuperview
 {
     [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
+    [topView removeFromSuperview];
+    [super removeFromSuperview];
 }
 
 - (void)layoutSubviews

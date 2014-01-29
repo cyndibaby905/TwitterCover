@@ -14,6 +14,9 @@
 @end
 
 @implementation CHTwitterCoverDemoScrollViewController
+{
+    UIScrollView *scrollView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, 600)];
     [scrollView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"]];
     [self.view addSubview:scrollView];
@@ -47,6 +50,12 @@
         label;
     })];
 }
+
+- (void)dealloc
+{
+    [scrollView removeTwitterCoverView];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

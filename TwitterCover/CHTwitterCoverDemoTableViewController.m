@@ -46,6 +46,11 @@
 }
 
 
+- (void)dealloc
+{
+    [self.tableView removeTwitterCoverView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
