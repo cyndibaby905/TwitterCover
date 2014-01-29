@@ -25,7 +25,10 @@ No other frameworks required.
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [scrollView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"]];
 
-    
+And do not forget to remove it in your dealloc method, otherwise memory leaks:
+
+    [scrollView removeTwitterCoverView];    
+
 ## How it looks ##
 
 ![TwitterCover] (https://raw.github.com/cyndibaby905/TwitterCover/master/TwitterCover.gif)
