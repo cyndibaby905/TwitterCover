@@ -15,6 +15,9 @@
 @end
 
 @implementation CHTwitterCoverDemoTableViewController
+{
+    UIView *topView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,15 +36,27 @@
     return self;
 }
 
+- (id)initWithTopView:(UIView*)view
+{
+    self = [super init];
+    if (self) {
+        topView = view;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"]];
+    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] withTopView:topView];
+    
     //This tableHeaderView plays the placeholder role here.
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight + topView.bounds.size.height)];
 }
+
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

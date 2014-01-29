@@ -50,17 +50,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    if (indexPath.row) {
-        cell.textLabel.text = @"UITableView+TwitterCover";
-    }
-    else {
-        cell.textLabel.text = @"UIScrollview+TwitterCover";
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"UIScrollview+TwitterCover";
+            break;
+        case 1:
+            cell.textLabel.text = @"UITableView+TwitterCover";
+            break;
+        case 2:
+            cell.textLabel.text = @"UITableView+TwitterCover with Top offset";
+            break;
+        default:
+            break;
     }
     return cell;
 }
@@ -68,12 +76,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row) {
-        [self.navigationController pushViewController:[[CHTwitterCoverDemoTableViewController alloc] init] animated:YES];
-    }
-    else {
-        [self.navigationController pushViewController:[[CHTwitterCoverDemoScrollViewController alloc] init] animated:YES];
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController pushViewController:[[CHTwitterCoverDemoScrollViewController alloc] init] animated:YES];
 
+            break;
+        case 1:
+            [self.navigationController pushViewController:[[CHTwitterCoverDemoTableViewController alloc] init] animated:YES];
+
+            break;
+        case 2:
+        {
+            UILabel *label = [UILabel new];
+            label.frame = CGRectMake(0, 0, 320, 100);
+            label.backgroundColor = [UIColor clearColor];
+            label.numberOfLines = 0;
+            label.font = [UIFont boldSystemFontOfSize:20];
+            label.text = @"This is a header view, This is a header view, This is a header view, This is a header view.";
+            
+            [self.navigationController pushViewController:[[CHTwitterCoverDemoTableViewController alloc] initWithTopView:label] animated:YES];
+        }
+            break;
+        default:
+            break;
     }
 }
 

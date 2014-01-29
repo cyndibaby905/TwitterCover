@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CHTwitterCoverDemoTableViewController : UITableViewController
-
+- (id)initWithTopView:(UIView*)view;
 @end

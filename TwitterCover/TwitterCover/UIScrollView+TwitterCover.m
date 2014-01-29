@@ -47,33 +47,45 @@ static char UIScrollViewTwitterCover;
 
 - (void)addTwitterCoverWithImage:(UIImage*)image
 {
-    CHTwitterCoverView *view = [[CHTwitterCoverView alloc] initWithFrame:CGRectMake(0,0, 320, CHTwitterCoverViewHeight)];
+    [self addTwitterCoverWithImage:image withTopView:nil];
+}
 
+- (void)addTwitterCoverWithImage:(UIImage*)image withTopView:(UIView*)topView
+{
+    CHTwitterCoverView *view = [[CHTwitterCoverView alloc] initWithFrame:CGRectMake(0,0, 320, CHTwitterCoverViewHeight) andContentTopView:topView];
+    
     view.backgroundColor = [UIColor clearColor];
     view.image = image;
     view.scrollView = self;
-   
+    
     [self addSubview:view];
+    if (topView) {
+        [self addSubview:topView];
+    }
     self.twitterCoverView = view;
 }
-
-
 @end
 
 
 @implementation CHTwitterCoverView
 {
     NSMutableArray *blurImages_;
+    UIView *topView;
 }
 
 - (id)initWithFrame:(CGRect)frame
+{
+    return [self initWithFrame:frame andContentTopView:nil];
+}
+
+- (id)initWithFrame:(CGRect)frame andContentTopView:(UIView*)view
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.contentMode = UIViewContentModeScaleAspectFill;
         self.clipsToBounds = YES;
         blurImages_ = [[NSMutableArray alloc] initWithCapacity:20];
-
+        topView = view;
     }
     return self;
 }
@@ -113,10 +125,11 @@ static char UIScrollViewTwitterCover;
 {
     [super layoutSubviews];
     if (self.scrollView.contentOffset.y < 0) {
+
         CGFloat offset = -self.scrollView.contentOffset.y;
-        
-        
-        self.frame = CGRectMake(-offset,-offset, 320+ offset * 2, CHTwitterCoverViewHeight + offset);
+        topView.frame = CGRectMake(0, -offset, 320, topView.bounds.size.height);
+
+        self.frame = CGRectMake(-offset,-offset + topView.bounds.size.height, 320+ offset * 2, CHTwitterCoverViewHeight + offset);
         NSInteger index = offset / 10;
         if (index < 0) {
             index = 0;
@@ -131,7 +144,9 @@ static char UIScrollViewTwitterCover;
         
     }
     else {
-        self.frame = CGRectMake(0,0, 320, CHTwitterCoverViewHeight);
+        topView.frame = CGRectMake(0, 0, 320, topView.bounds.size.height);
+
+        self.frame = CGRectMake(0,topView.bounds.size.height, 320, CHTwitterCoverViewHeight);
         UIImage *image = blurImages_[0];
 
         if (self.image != image) {
