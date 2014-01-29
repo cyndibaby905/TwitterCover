@@ -25,6 +25,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CHViewController : UIViewController
+@interface CHViewController : UITableViewController
 
 @end

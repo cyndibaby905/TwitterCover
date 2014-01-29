@@ -24,31 +24,57 @@
 //  THE SOFTWARE.
 
 #import "CHViewController.h"
-#import "UIScrollView+TwitterCover.h"
+#import "CHTwitterCoverDemoTableViewController.h"
+#import "CHTwitterCoverDemoScrollViewController.h"
 @interface CHViewController ()
 
 @end
 
 @implementation CHViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+       
+        self.title = @"TwitterCover Demos";
+        
+    }
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, 600)];
-    [scrollView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"]];
-    [self.view addSubview:scrollView];
+}
 
-    [scrollView addSubview:({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, CHTwitterCoverViewHeight, self.view.bounds.size.width - 40, 600 - CHTwitterCoverViewHeight)];
-        label.numberOfLines = 0;
-        label.font = [UIFont systemFontOfSize:22];
-        label.text = @"TwitterCover is a parallax top view with real time blur effect to any UIScrollView, inspired by Twitter for iOS.\n\nCompletely created using UIKit framework.\n\nEasy to drop into your project.\n\nYou can add this feature to your own project, TwitterCover is easy-to-use.";
-        label;
-    })];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
 
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    if (indexPath.row) {
+        cell.textLabel.text = @"UITableView+TwitterCover";
+    }
+    else {
+        cell.textLabel.text = @"UIScrollview+TwitterCover";
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row) {
+        [self.navigationController pushViewController:[[CHTwitterCoverDemoTableViewController alloc] init] animated:YES];
+    }
+    else {
+        [self.navigationController pushViewController:[[CHTwitterCoverDemoScrollViewController alloc] init] animated:YES];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning

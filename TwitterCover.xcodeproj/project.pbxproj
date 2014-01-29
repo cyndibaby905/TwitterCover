@@ -21,6 +21,8 @@
 		77717519187C54EE0059155A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77717517187C54EE0059155A /* InfoPlist.strings */; };
 		7771751B187C54EE0059155A /* TwitterCoverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7771751A187C54EE0059155A /* TwitterCoverTests.m */; };
 		77717527187C55900059155A /* UIScrollView+TwitterCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 77717526187C55900059155A /* UIScrollView+TwitterCover.m */; };
+		77B4EBCB1898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B4EBCA1898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.m */; };
+		77B4EBD11898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B4EBD01898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.m */; };
 		77C76384187DA1B8006716A9 /* cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C76382187DA1B8006716A9 /* cover.png */; };
 		77C76385187DA1B8006716A9 /* cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C76383187DA1B8006716A9 /* cover@2x.png */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,10 @@
 		7771751A187C54EE0059155A /* TwitterCoverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterCoverTests.m; sourceTree = "<group>"; };
 		77717525187C55900059155A /* UIScrollView+TwitterCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TwitterCover.h"; sourceTree = "<group>"; };
 		77717526187C55900059155A /* UIScrollView+TwitterCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TwitterCover.m"; sourceTree = "<group>"; };
+		77B4EBC91898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTwitterCoverDemoScrollViewController.h; sourceTree = "<group>"; };
+		77B4EBCA1898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTwitterCoverDemoScrollViewController.m; sourceTree = "<group>"; };
+		77B4EBCF1898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTwitterCoverDemoTableViewController.h; sourceTree = "<group>"; };
+		77B4EBD01898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTwitterCoverDemoTableViewController.m; sourceTree = "<group>"; };
 		77C76382187DA1B8006716A9 /* cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover.png; sourceTree = "<group>"; };
 		77C76383187DA1B8006716A9 /* cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +130,10 @@
 				777174FC187C54EE0059155A /* CHAppDelegate.m */,
 				77717504187C54EE0059155A /* CHViewController.h */,
 				77717505187C54EE0059155A /* CHViewController.m */,
+				77B4EBCF1898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.h */,
+				77B4EBD01898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.m */,
+				77B4EBC91898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.h */,
+				77B4EBCA1898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.m */,
 				77717507187C54EE0059155A /* Images.xcassets */,
 				777174F3187C54EE0059155A /* Supporting Files */,
 			);
@@ -268,6 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				777174F9187C54EE0059155A /* main.m in Sources */,
+				77B4EBD11898CD5300D6B034 /* CHTwitterCoverDemoTableViewController.m in Sources */,
+				77B4EBCB1898CBBA00D6B034 /* CHTwitterCoverDemoScrollViewController.m in Sources */,
 				777174FD187C54EE0059155A /* CHAppDelegate.m in Sources */,
 				77717506187C54EE0059155A /* CHViewController.m in Sources */,
 				77717527187C55900059155A /* UIScrollView+TwitterCover.m in Sources */,
