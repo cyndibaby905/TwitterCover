@@ -58,6 +58,13 @@ static char UIScrollViewTwitterCover;
     view.image = image;
     view.scrollView = self;
     
+    // auto reajust all subviews y index
+    for (UIView *subv in self.subviews) {
+        CGRect frame = subv.frame;
+        frame.origin.y += CHTwitterCoverViewHeight;
+        subv.frame = frame;
+    }
+    
     [self addSubview:view];
     if (topView) {
         [self addSubview:topView];
