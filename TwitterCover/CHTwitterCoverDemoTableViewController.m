@@ -73,7 +73,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] withTopView:topView];
+    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] imageHeight:150 withTopView:topView];
     
     //This tableHeaderView plays the placeholder role here.
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight + topView.bounds.size.height)];
