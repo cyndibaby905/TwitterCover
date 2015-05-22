@@ -34,8 +34,9 @@
 
 @interface UIScrollView (TwitterCover)
 @property(nonatomic,weak)CHTwitterCoverView *twitterCoverView;
-- (void)addTwitterCoverWithImage:(UIImage*)image;
-- (void)addTwitterCoverWithImage:(UIImage*)image withTopView:(UIView*)topView;
+
+- (void)addTwitterCoverWithImage:(UIImage*)image imageHeight:(CGFloat)height;
+- (void)addTwitterCoverWithImage:(UIImage*)image imageHeight:(CGFloat)height withTopView:(UIView*)topView;
 - (void)removeTwitterCoverView;
 @end
 

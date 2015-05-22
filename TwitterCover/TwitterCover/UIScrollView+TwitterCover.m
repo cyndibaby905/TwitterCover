@@ -28,6 +28,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Accelerate/Accelerate.h>
 
+#define App_Frame_Width         [[UIScreen mainScreen] applicationFrame].size.width
 
 static char UIScrollViewTwitterCover;
 
@@ -45,16 +46,17 @@ static char UIScrollViewTwitterCover;
     return objc_getAssociatedObject(self, &UIScrollViewTwitterCover);
 }
 
-- (void)addTwitterCoverWithImage:(UIImage*)image
+- (void)addTwitterCoverWithImage:(UIImage*)image imageHeight:(CGFloat)height
 {
-    [self addTwitterCoverWithImage:image withTopView:nil];
+    [self addTwitterCoverWithImage:image imageHeight:height withTopView:nil];
 }
 
-- (void)addTwitterCoverWithImage:(UIImage*)image withTopView:(UIView*)topView
+- (void)addTwitterCoverWithImage:(UIImage*)image imageHeight:(CGFloat)height withTopView:(UIView*)topView
 {
-    CHTwitterCoverView *view = [[CHTwitterCoverView alloc] initWithFrame:CGRectMake(0,0, 320, CHTwitterCoverViewHeight) andContentTopView:topView];
-    
-    view.backgroundColor = [UIColor clearColor];
+
+    CGFloat viewHeight = height > 0.5 ? height :CHTwitterCoverViewHeight;
+    CHTwitterCoverView *view = [[CHTwitterCoverView alloc] initWithFrame:CGRectMake(0,0, App_Frame_Width, viewHeight)
+                                                       andContentTopView:topView];
     view.image = image;
     view.scrollView = self;
     
@@ -78,6 +80,7 @@ static char UIScrollViewTwitterCover;
 {
     NSMutableArray *blurImages_;
     UIView *topView;
+    CGFloat _initViewHeight;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -93,6 +96,7 @@ static char UIScrollViewTwitterCover;
         self.clipsToBounds = YES;
         blurImages_ = [[NSMutableArray alloc] initWithCapacity:20];
         topView = view;
+        _initViewHeight = frame.size.height;
     }
     return self;
 }
@@ -133,12 +137,16 @@ static char UIScrollViewTwitterCover;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+
+    CGFloat viewHeight = _initViewHeight> 0.5 ? _initViewHeight : CHTwitterCoverViewHeight;
     if (self.scrollView.contentOffset.y < 0) {
 
         CGFloat offset = -self.scrollView.contentOffset.y;
         topView.frame = CGRectMake(0, -offset, 320, topView.bounds.size.height);
-
-        self.frame = CGRectMake(-offset,-offset + topView.bounds.size.height, 320+ offset * 2, CHTwitterCoverViewHeight + offset);
+        self.frame = CGRectMake(-offset,
+                                -offset + topView.bounds.size.height
+                                , App_Frame_Width + offset * 2
+                                , viewHeight + offset);
         NSInteger index = offset / 10;
         if (index < 0) {
             index = 0;
@@ -150,12 +158,14 @@ static char UIScrollViewTwitterCover;
         if (self.image != image) {
             [super setImage:image];
         }
-        
     }
     else {
         topView.frame = CGRectMake(0, 0, 320, topView.bounds.size.height);
 
-        self.frame = CGRectMake(0,topView.bounds.size.height, 320, CHTwitterCoverViewHeight);
+        self.frame = CGRectMake(0,
+                                topView.bounds.size.height,
+                                App_Frame_Width,
+                                viewHeight);
         UIImage *image = blurImages_[0];
 
         if (self.image != image) {
