@@ -8,6 +8,7 @@ Easy to drop into your project.
 
 You can add this feature to your own project, `TwitterCover` is easy-to-use. 
 
+**Now the Android version is also available:** [TwitterCover-Android](https://github.com/cyndibaby905/TwitterCover-Android)
 
 ## Requirements ##
 
