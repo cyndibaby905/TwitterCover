@@ -107,12 +107,18 @@ static char UIScrollViewTwitterCover;
 
 - (void)prepareForBlurImages
 {
-    CGFloat factor = 0.1;
-    [blurImages_ addObject:self.image];
-    for (NSUInteger i = 0; i < 20; i++) {
-        [blurImages_ addObject:[self.image boxblurImageWithBlur:factor]];
-        factor+=0.04;
-    }
+    self.scrollView.scrollEnabled = NO;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CGFloat factor = 0.1;
+        [blurImages_ addObject:self.image];
+        for (NSUInteger i = 0; i < 20; i++) {
+            [blurImages_ addObject:[self.image boxblurImageWithBlur:factor]];
+            factor+=0.04;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.scrollView.scrollEnabled = YES;
+        });
+    });
 }
 
 - (void)setScrollView:(UIScrollView *)scrollView
