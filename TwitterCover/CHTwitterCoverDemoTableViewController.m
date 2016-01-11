@@ -26,6 +26,7 @@
 #import "CHTwitterCoverDemoTableViewController.h"
 #import "UIScrollView+TwitterCover.h"
 
+#define CoverHeight 200
 
 @interface CHTwitterCoverDemoTableViewController ()
 
@@ -62,24 +63,19 @@
     return self;
 }
 
-
-- (void)dealloc
-{
-    [self.tableView removeTwitterCoverView];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] withTopView:topView];
+    // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    
+    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] coverHeight:CoverHeight noBlur:NO withTopView:topView];
     
     //This tableHeaderView plays the placeholder role here.
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight + topView.bounds.size.height)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CoverHeight + topView.bounds.size.height)];
 }
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -96,13 +92,15 @@
     }
     
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d",indexPath.row + 1];
+    cell.textLabel.text = [NSString stringWithFormat:@"Cell %ld",indexPath.row + 1];
     
     return cell;
 }
 
-
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+}
 
 - (void)didReceiveMemoryWarning
 {

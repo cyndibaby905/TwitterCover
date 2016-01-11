@@ -32,7 +32,7 @@ And do not forget to remove it in your dealloc method, otherwise memory leaks:
 
 ## How it looks ##
 
-![TwitterCover] (https://raw.github.com/cyndibaby905/TwitterCover/master/TwitterCover.gif)
+![TwitterCover] (https://raw.github.com/CocoaBob/TwitterCover/master/TwitterCover.gif)
 
 
 ## Lincense ##

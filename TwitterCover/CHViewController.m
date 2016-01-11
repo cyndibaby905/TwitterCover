@@ -88,11 +88,11 @@
         case 2:
         {
             UILabel *label = [UILabel new];
-            label.frame = CGRectMake(0, 0, 320, 100);
+            label.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 100);
             label.backgroundColor = [UIColor clearColor];
             label.numberOfLines = 0;
             label.font = [UIFont boldSystemFontOfSize:20];
-            label.text = @"This is a header view, This is a header view, This is a header view, This is a header view.";
+            label.text = @"This is a header view, This is a header view, This is a header view.";
             
             [self.navigationController pushViewController:[[CHTwitterCoverDemoTableViewController alloc] initWithTopView:label] animated:YES];
         }
