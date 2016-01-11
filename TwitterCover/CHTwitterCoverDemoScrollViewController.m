@@ -26,6 +26,8 @@
 #import "CHTwitterCoverDemoScrollViewController.h"
 #import "UIScrollView+TwitterCover.h"
 
+#define CoverHeight 200
+
 @interface CHTwitterCoverDemoScrollViewController ()
 
 @end
@@ -52,27 +54,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, 600)];
-    [scrollView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"]];
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, 1000)];
+    [scrollView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] coverHeight:CoverHeight noBlur:NO];
     [self.view addSubview:scrollView];
     
     [scrollView addSubview:({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, CHTwitterCoverViewHeight, self.view.bounds.size.width - 40, 600 - CHTwitterCoverViewHeight)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, CoverHeight, self.view.bounds.size.width - 40, 1000 - CoverHeight)];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         label.numberOfLines = 0;
-        label.font = [UIFont systemFontOfSize:22];
+        label.font = [UIFont systemFontOfSize:28];
         label.text = @"TwitterCover is a parallax top view with real time blur effect to any UIScrollView, inspired by Twitter for iOS.\n\nCompletely created using UIKit framework.\n\nEasy to drop into your project.\n\nYou can add this feature to your own project, TwitterCover is easy-to-use.";
         label;
     })];
 }
 
-- (void)dealloc
-{
-    [scrollView removeTwitterCoverView];
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, 1000)];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+    }];
 }
-
 
 - (void)didReceiveMemoryWarning
 {

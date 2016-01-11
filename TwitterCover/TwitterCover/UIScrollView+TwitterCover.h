@@ -24,20 +24,33 @@
 //  THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#define CHTwitterCoverViewHeight 200
+
 
 @interface CHTwitterCoverView : UIImageView
+
 @property (nonatomic, weak) UIScrollView *scrollView;
-- (id)initWithFrame:(CGRect)frame andContentTopView:(UIView*)view;
+@property (nonatomic, assign) BOOL noBlur;
+@property (nonatomic, assign) BOOL noDim;
+@property (nonatomic, assign) BOOL noContentInset;
+
+- (id)initWithFrame:(CGRect)frame andContentTopView:(UIView *)view;
+
 @end
 
+#pragma mark -
 
 @interface UIScrollView (TwitterCover)
-@property(nonatomic,weak)CHTwitterCoverView *twitterCoverView;
-- (void)addTwitterCoverWithImage:(UIImage*)image;
-- (void)addTwitterCoverWithImage:(UIImage*)image withTopView:(UIView*)topView;
-- (void)removeTwitterCoverView;
+
+@property (nonatomic, strong) CHTwitterCoverView *twitterCoverView;
+
+- (void)addTwitterCoverWithImage:(UIImage *)image coverHeight:(CGFloat)coverHeight;
+- (void)addTwitterCoverWithImage:(UIImage *)image coverHeight:(CGFloat)coverHeight noBlur:(BOOL)noBlur;
+- (void)addTwitterCoverWithImage:(UIImage *)image coverHeight:(CGFloat)coverHeight withTopView:(UIView *)topView;
+- (void)addTwitterCoverWithImage:(UIImage *)image coverHeight:(CGFloat)coverHeight noBlur:(BOOL)noBlur withTopView:(UIView *)topView;
+
 @end
+
+#pragma mark -
 
 @interface UIImage (Blur)
 -(UIImage *)boxblurImageWithBlur:(CGFloat)blur;
